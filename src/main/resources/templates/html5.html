@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://www.divcss5.com/jiqiao/j345.shtml -->
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="renderer" content="webkit">
+    <title>CSS隐藏div盒子及html内容方法 - DIVCSS5</title>
+    <meta name="keywords" content="隐藏,css隐藏,css隐藏html内容">
+    <meta name="description" content="DIVCSS5总结几点关于对HTML内容隐藏方法，通过CSS样式隐藏HTML内容或html标签，同时不影响被隐藏的内容功能。">
+    <link rel="stylesheet" th:href="@{/html5_files/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/html5_files/bootstrap-responsive.css}">
+    <link rel="stylesheet" th:href="@{/html5_files/global.css}">
+    <script th:src="@{/html5_files/hm.js}"></script>
+    <script th:src="@{/html5_files/jquery.min.js}"></script>
+    <script th:src="@{/html5_files/scrolltopcontrol.js}"></script>
+    <link rel="stylesheet" th:href="@{/html5_files/list.css}">
+    <script th:src="@{/html5_files/gg2.js}"></script>
+    <style>
+	article {
+	    border-bottom: 1px solid #ececec;
+		text-indent: 2em;
+	}
+	article img {
+		float: right;
+	}
+	blockquote {
+		border-left: 0;
+	    margin: 30px 30px 50px;
+	}
+    @media (max-width: 768px) and (min-width: 320px) {
+    	blockquote { margin: 10px 10px 15px; }
+    }
+	.mod-list > .bd.article-ct .main {
+		border-left: 0;
+	    border-right: 1px solid #ececec;
+       width: 75%;
+	}
+	@media (max-width: 768px) and (min-width: 320px) {
+		.mod-list > .bd.article-ct .main {
+			width: 100%;
+			border-right: 0;
+			padding: 0;
+		}
+	}
+	.aside {
+		padding-left: 16px;
+	}
+	@media (max-width: 768px) and (min-width: 320px) { 
+		.aside {
+			padding-left: 0;
+		}
+	}
+
+
+    </style>
+    <script src="@{/html5_files/share.js}"></script>
+    <link rel="stylesheet" href="./html5_files/share_style0_32.css">
+</head>
+<body>
+<div class="topbar">
+    <div class="container">
+        <div class="row-fluid show-grid">
+            <div class="span5 welcome">欢迎来到DIVCSS5查找CSS资料与学习DIV CSS布局技术！</div>
+            <div class="span7 right-links">
+                <a target="_blank" href="http://www.divcss5.com/shouce/">CSS手册</a>
+                <a target="_blank" href="http://www.divcss5.com/css3/">CSS3手册</a>
+                <a href="http://www.divcss5.com/bbs/" class="blue" target="_blank">CSS论坛</a>
+                <a target="_blank" href="http://www.divcss5.com/peixun/" title="DIV CSS培训" class="red">CSS培训</a>
+                <a class="blue" target="_blank" href="http://www.divcss5.com/renwu/" title="CSS制作切图 网页美工设计 去DIVCSS5任务">CSS任务</a>
+                <a target="_blank" href="http://www.divcss5.com/wenzhai/">网闻</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="top row">
+                <div class="span3 logo">
+                    <a href="http://www.divcss5.com/jiqiao/j345.shtml#"><img src="./html5_files/divcss5-logo-2014.gif"
+                                                                             alt="" data-bd-imgshare-binded="1"></a>
+                </div>
+                <div class="span5 hd-search">
+                    <form action="http://www.divcss5.com/jiqiao/j345.shtml">
+                        <div class="input-text">
+                            <input type="text" value="查找您需要的CSS信息">
+                            <input type="submit" value="搜索">
+                        </div>
+                    </form>
+                </div>
+                <div class="span4 hd-ad">
+                    <a href="http://www.divcss5.com/peixun/" title="DIVCSS5培训 系统快速学会CSS布局技术！" target="_blank"><img
+                            src="./html5_files/px.gif" width="468" height="60" alt="DIVCSS5培训 系统快速学会CSS布局技术！"
+                            data-bd-imgshare-binded="1"></a>
+                </div>
+            </div>
+            <div class="site-nav" id="sitenav">
+                <a class="m-logo show-in-phone fl" href="http://www.divcss5.com/jiqiao/j345.shtml#"><img
+                        style="margin-top: 3px;" width="90" src="./html5_files/divcss5-logo-2014.gif" alt=""
+                        data-bd-imgshare-binded="1"></a>
+                <button type="button" class="btn btn-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="http://www.divcss5.com/">首页</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/html/">HTML基础</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/htmlrumen/">HTML入门</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/html5/">HTML5</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/rumen/">CSS基础</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/cssrumen/">CSS入门</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css3-style/">CSS3</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css-hack/">CSS Hack</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css-tool/">CSS工具</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css-jiaocheng/">CSS教程</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css-ps/" title="css Photoshop切图教程">PS教程</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/w3c/">WEB标准</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/jiqiao/" title="DIV+CSS技巧">CSS技巧</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/template/" title="网页局部CSS模块">CSS模块</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/css-texiao/" title="JS+CSS特效">CSS特效</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/shili/">CSS实例</a>
+                        </li>
+                        <li class="">
+                            <a href="http://www.divcss5.com/wenji/">CSS问题</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="hd-search show-in-phone">
+        <form action="http://www.divcss5.com/jiqiao/j345.shtml">
+            <div class="input-text">
+                <input type="text" value="查找您需要的CSS信息">
+                <input type="submit" value="搜索">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+	$(function() {
+	    var Accordion = function(el, multiple) {
+	        this.el = el || {};
+	        this.multiple = multiple || false;
+	        var links = this.el.find('.btn-navbar');
+	        links.on('click', {
+	            el: this.el,
+	            multiple: this.multiple
+	        }, this.dropdown)
+	    }
+	    Accordion.prototype.dropdown = function(e) {
+	        var $el = e.data.el;
+	        $this = $(this),
+	        $next = $this.next();
+	        $next.slideToggle();
+	    }
+	    var accordion = new Accordion($('#sitenav'),false);
+	});
+
+</script>
+<div class="container page-container">
+    <div class="mod-list">
+        <div class="hd">
+            <!-- 面包屑开始 -->
+            <div class="bread-crumb">
+                <div class="wrap">
+                    <a href="http://www.divcss5.com/">DIVCSS5首页</a> &gt; <a
+                        href="http://www.divcss5.com/jiqiao/">CSS技巧</a> &gt;
+                </div>
+            </div>
+            <!-- 面包屑结束 -->
+        </div>
+        <div class="bd row article-ct">
+            <div class="span9 main">
+                <div class="article">
+                    <div class="tit">
+                        <h2><a href="http://www.divcss5.com/jiqiao/j345.shtml">CSS隐藏div盒子及html内容方法</a></h2>
+                    </div>
+                    <article>
+                        <div style="clear:right;float:right;margin:0 8px 5px 0;width:336px;height:280px;moz-background-clip:border;moz-background-origin:padding; moz-background-inline-policy:continuous;background:#FFF;border:1px solid #CCC;padding:2px">
+                            <script type="text/javascript" src="./html5_files/ac336.js.下载"></script>
+                            <a href="http://www.ibeifeng.com/tuiguang_web.php?div_top1_0603-qudao" target="_blank"><img
+                                    src="./html5_files/336-280.jpg" border="0" width="336" height="280"
+                                    data-bd-imgshare-binded="1"></a>
+
+                        </div>
+                        <p><strong>Html中怎么使用<a
+                                href="http://www.divcss5.com/rumen/r29.shtml">CSS样式</a>隐藏内容，又不影响代码功能使用。</strong></p>
+                        <p>我们常常想隐藏一些内容，比如网站添加第三方统计显示的图标，如何通过<strong>CSS隐藏</strong>，但又不影响网站统计；怎么让图片作为背景，但文字又不显示，如何隐藏等问题。divcss5给大家分享分享。
+                        </p>
+                        <p><strong>一、普通隐藏网页内容</strong></p>
+                        <p><a href="http://www.divcss5.com/">CSS</a>样式单词：<a
+                                href="http://www.divcss5.com/rumen/r291.shtml">display</a>:none<br>
+                            假如我们想隐藏一段统计代码，但又不想显示出统计代码图标，又不影响统计功能，我们即可使用此CSS样式单词display:none（这单词意思不显示对象及对象内容）。</p>
+                        <p><strong>CSS代码：</strong><br>
+                            .tongji{<a href="http://www.divcss5.com/rumen/r291.shtml">display:none</a>}</p>
+                        <p><strong><a href="http://www.divcss5.com/html/">HTML</a>片段：</strong><br>
+                            &lt;div class="tongji"&gt;隐藏内容&lt;/div&gt;</p>
+                        <p><strong>说明：</strong>此<a href="http://www.divcss5.com/">DIV CSS</a>隐藏，将隐藏对象DIV及对象内容，但功能不受影响。对于搜索引擎来说，无论你此样式是标签内使用还是向这个实例一般分开CSS与<a
+                                href="http://www.divcss5.com/html/">HTML</a>，搜索引擎都会不读取和索引你隐藏内容，对于隐藏关键字的朋友来说，千万不要使用此CSS隐藏方式来隐藏关键字或锚文本链接，不然只是个徒劳。
+                        </p>
+                        <p><strong>二、图片做背景，隐藏图片上文字，又不影响A超链接 锚文本</strong></p>
+                        <p>我们平时会遇到，我们想以图片作为对象背景，内容用文字+超链接来做优化，同时又想隐藏文字，超链接不受影响，这样来优化网页，即不影响美观又达到了搜索引擎优化的效果。</p>
+                        <p>所用关键CSS样式：text-indent:-9999px</p>
+                        <p>divcss5在这里为大家介绍使用CSS来实现。在divcss5也是用这种方法来放置LOGO。<br>
+                            大家可以查看www.divcss5.com的<a href="http://www.divcss5.com/html/h26.shtml">源代码</a>。</p>
+                        <p>如需转载，请注明文章出处和来源网址：<a href="http://www.divcss5.com/jiqiao/j345.shtml">http://www.divcss5.com/jiqiao/j345.shtml</a>
+                        </p>
+                    </article>
+                    <div class="share">
+                        <div class="baidu-share">
+                            <div class="tit"><b>我要分享到：</b></div>
+                            <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1622614476356"><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_tsina" data-cmd="tsina"
+                                    title="分享到新浪微博"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                           class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_tqq" data-cmd="tqq"
+                                    title="分享到腾讯微博"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                           class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_bdysc" data-cmd="bdysc"
+                                    title="分享到百度云收藏"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                            class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_bdxc" data-cmd="bdxc"
+                                    title="分享到百度相册"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                           class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_bdhome"
+                                    data-cmd="bdhome" title="分享到百度新首页"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_tqf" data-cmd="tqf"
+                                    title="分享到腾讯朋友"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                           class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_youdao"
+                                    data-cmd="youdao" title="分享到有道云笔记"></a><a
+                                    href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_copy" data-cmd="copy"
+                                    title="分享到复制网址"></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                           class="bds_more" data-cmd="more"></a></div>
+
+                        </div>
+                    </div>
+                    <div class="article-nav">
+                        <ul>
+                            <li>上一篇：<a href="http://www.divcss5.com/jiqiao/j327.shtml">CSS去掉b加粗和strong加粗标签样式</a></li>
+                            <li>下一篇：<a href="http://www.divcss5.com/jiqiao/j369.shtml">CSS背景颜色 背景图片 居中 重复
+                                固定样式background经验篇</a></li>
+                        </ul>
+                    </div>
+                    <div class="mod-card">
+                        <div class="hd">
+                            <div class="tit">必备CSS教程<span>Essential CSS Tutorials</span></div>
+                        </div>
+                        <div class="bd">
+                            <ul class="link-list">
+                                <li><a href="http://www.divcss5.com/rumen/r123.shtml" target="_blank" title="css 高度">css
+                                    height</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r363.shtml" target="_blank" title="css 行高">css
+                                    line-height</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r119.shtml" target="_blank" title="css 宽度">css
+                                    width</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r423.shtml" target="_blank" title="css 最小宽度">css
+                                    min-width</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r423.shtml" target="_blank" title="css 最大宽度">css
+                                    max-width</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r422.shtml" target="_blank" title="css 最小高度">css
+                                    min-height</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r422.shtml" target="_blank" title="css 最大高度">css
+                                    max-height</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r120.shtml" target="_blank" title="css 边框">css
+                                    border</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r125.shtml" target="_blank" title="css 背景">css
+                                    background</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r93.shtml" target="_blank" title="css 浮动">css
+                                    float</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r424.shtml" target="_blank" title="css 清除浮动">css
+                                    clear</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r291.shtml" target="_blank" title="CSS 显示与隐藏">css
+                                    display</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r74.shtml" target="_blank" title="css文本">css
+                                    font</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r309.shtml" target="_blank" title="css字母全大写">css
+                                    text-transform</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r309.shtml" target="_blank">css英文首字母大写</a>
+                                </li>
+                                <li><a href="http://www.divcss5.com/rumen/r74.shtml" target="_blank">css
+                                    font-variant</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r122.shtml" target="_blank" title="css 加粗">css
+                                    font-weight</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r395.shtml" target="_blank" title="css 字体样式">css
+                                    font-style</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r129.shtml" target="_blank"
+                                       title="css下划线 删除线 贯穿线">css text-decoration</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r129.shtml" target="_blank">css 删除线</a></li>
+                                <li><a href="http://www.divcss5.com/shili/s296.shtml" target="_blank">div css 虚线</a>
+                                </li>
+                                <li><a href="http://www.divcss5.com/rumen/r32.shtml" target="_blank">css 注释</a></li>
+                                <li><a href="http://www.divcss5.com/html/h312.shtml" target="_blank">html 注释</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r418.shtml" target="_blank" title="css 内补白">css
+                                    padding</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r128.shtml" target="_blank" title="css 外边距">css
+                                    margin</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r134.shtml" target="_blank">css 文本</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r322.shtml" target="_blank"
+                                       title="css 字体文本大小">css font-size</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r295.shtml" target="_blank" title="css 字体">css
+                                    font-family</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r116.shtml" target="_blank" title="css 字体颜色">css
+                                    color</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r350.shtml" target="_blank"
+                                       title="css 居左 居右 居中">css text-align</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r400.shtml" target="_blank" title="css 缩进">css
+                                    text-indent</a></li>
+                                <li><a href="http://www.divcss5.com/shili/s57.shtml" target="_blank">css 超链接</a>(<a
+                                        href="http://www.divcss5.com/shili/s57.shtml">css a</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/jiqiao/j240.shtml" target="_blank">css 优化压缩</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r117.shtml" target="_blank">css id</a>(<a
+                                        href="http://www.divcss5.com/rumen/r117.shtml">css #</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/rumen/r117.shtml" target="_blank">css class</a>(<a
+                                        href="http://www.divcss5.com/rumen/r117.shtml">css .</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/shili/s31.shtml" target="_blank">css ul li列表</a>
+                                </li>
+                                <li><a href="http://www.divcss5.com/css-texiao/texiao392.shtml" target="_blank">css
+                                    圆角圆边</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r239.shtml" target="_blank">css 父级子级</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r238.shtml" target="_blank">css 指针概念</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r427.shtml" target="_blank"
+                                       title="css 鼠标指针样式">css cursor</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r414.shtml" target="_blank" title="css 滚动条样式">css
+                                    overflow</a></li>
+                                <li><a href="http://www.divcss5.com/html/h89.shtml" target="_blank">html px em
+                                    pt网页单位</a></li>
+                                <li><a href="http://www.divcss5.com/jiqiao/j297.shtml" target="_blank"
+                                       title="css IE7优先">CSS important</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r403.shtml" target="_blank" title="css 定位">CSS
+                                    position</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r402.shtml" target="_blank" title="css 重叠顺序">css
+                                    z-index</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r401.shtml" target="_blank" title="css强制不换行">css
+                                    white-space</a></li>
+                                <li><a href="http://www.divcss5.com/jiqiao/j242.shtml" target="_blank">css img图片</a>
+                                </li>
+                                <li><a href="http://www.divcss5.com/rumen/r117.shtml" target="_blank">css class id</a>
+                                </li>
+                                <li><a href="http://www.divcss5.com/rumen/r431.shtml" target="_blank">css
+                                    link与@import区别</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r61.shtml" target="_blank">css 选择器</a></li>
+                                <li><a href="http://www.divcss5.com/rumen/r56.shtml" target="_blank">css引入html</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod-card">
+                        <div class="hd">
+                            <div class="tit">必备HTML基础教程<span>Essential HTML Tutorials</span></div>
+                        </div>
+                        <div class="bd">
+                            <ul class="link-list">
+                                <li><a href="http://www.divcss5.com/html/h352.shtml">html img图片标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h335.shtml">html em标签</a>(<a
+                                        href="http://www.divcss5.com/html/h335.shtml">EM强调标签</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/html/h330.shtml">html strong加粗</a>(<a
+                                        href="http://www.divcss5.com/html/h330.shtml">strong标签</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/html/h329.shtml">html B加粗</a>(<a
+                                        href="http://www.divcss5.com/html/h329.shtml">b加粗标签</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/html/h331.shtml">strong与B加粗区别</a></li>
+                                <li><a href="http://www.divcss5.com/html/h328.shtml">h1 h2 h3 h4标签</a>(<a
+                                        href="http://www.divcss5.com/html/h328.shtml">html标题标签</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/html/h318.shtml">html A超链接锚文本</a></li>
+                                <li><a href="http://www.divcss5.com/html/h312.shtml">html注释</a></li>
+                                <li><a href="http://www.divcss5.com/html/h62.shtml">html head头部标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h124.shtml">html title标题标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h68.shtml">html meta标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h64.shtml">html link标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h358.shtml">html i斜体标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h361.shtml">html u下划线标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h362.shtml">html s删除线标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h324.shtml">html换行br标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h360.shtml">html p段落标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h78.shtml">p标签与br标签区别</a></li>
+                                <li><a href="http://www.divcss5.com/html/h121.shtml">html div标签元素</a></li>
+                                <li><a href="http://www.divcss5.com/html/h381.shtml">html span标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h383.shtml">html font标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h69.shtml">html script标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h89.shtml">html px em pt网页单位</a></li>
+                                <li><a href="http://www.divcss5.com/html/h385.shtml">html ul li列表</a></li>
+                                <li><a href="http://www.divcss5.com/html/h384.shtml">ol li列表</a></li>
+                                <li><a href="http://www.divcss5.com/html/h88.shtml">dl dt dd标签组</a></li>
+                                <li><a href="http://www.divcss5.com/html/h380.shtml">table tr td表格</a></li>
+                                <li><a href="http://www.divcss5.com/html/h380.shtml">table tr th表格</a></li>
+                                <li><a href="http://www.divcss5.com/html/h373.shtml">html form表单</a></li>
+                                <li><a href="http://www.divcss5.com/html/h374.shtml">html form input</a></li>
+                                <li><a href="http://www.divcss5.com/html/h382.shtml">html form textarea文本区域</a></li>
+                                <li><a href="http://www.divcss5.com/html/h336.shtml">html select下拉与跳转</a>(<a
+                                        href="http://www.divcss5.com/html/h336.shtml">Html select</a>)
+                                </li>
+                                <li><a href="http://www.divcss5.com/html/h379.shtml">html iframe框架</a></li>
+                                <li><a href="http://www.divcss5.com/html/h2.shtml">html网页结构</a></li>
+                                <li><a href="http://www.divcss5.com/html/h59.shtml">htm html shtml区别用法</a></li>
+                                <li><a href="http://www.divcss5.com/html/h28.shtml">网页编码charset</a></li>
+                                <li><a href="http://www.divcss5.com/html/h53.shtml">UTF-8 GBK UTF8 GB2312区别联系</a></li>
+                                <li><a href="http://www.divcss5.com/html/h13.shtml">先写html还是先写CSS</a></li>
+                                <li><a href="http://www.divcss5.com/html/h113.shtml">显示扩展名</a></li>
+                                <li><a href="http://www.divcss5.com/html/h313.shtml">html标签大全集合</a></li>
+                                <li><a href="http://www.divcss5.com/html/h323.shtml">html常用标签</a></li>
+                                <li><a href="http://www.divcss5.com/html/h26.shtml">网页源代码是什么</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span3 aside">
+                <div class="mod-card">
+                    <div class="hd">
+                        <div class="tit">最新文章 <span>NEWS</span></div>
+                    </div>
+                    <div class="bd">
+                        <ul class="news-list">
+                            <li><a href="http://www.divcss5.com/plus/view.php?aid=51617" title="CSS 简介需要具备的基础知识">CSS
+                                简介需要具备的基础知识</a></li>
+                            <li><a href="http://www.divcss5.com/plus/view.php?aid=55562"
+                                   title="如何使用纯CSS 实现一个没有DOM元素的动画效果">如何使用纯CSS 实现一个没有DOM元素的动画效果</a></li>
+                            <li><a href="http://www.divcss5.com/plus/view.php?aid=55985"
+                                   title="什么是css盒子模型？">什么是css盒子模型？</a></li>
+                            <li><a href="http://www.divcss5.com/plus/view.php?aid=55986"
+                                   title="什么是css盒子模型？">什么是css盒子模型？</a></li>
+                            <li><a href="http://www.divcss5.com/plus/view.php?aid=55988" title="css技术是什么">css技术是什么</a>
+                            </li>
+                            <li><a href="http://www.divcss5.com/html/h223.shtml" title="虚拟主机相关知识">虚拟主机相关知识</a></li>
+                            <li><a href="http://www.divcss5.com/css-hack/c294.shtml" title="DIV CSS加载失败">DIV CSS加载失败</a>
+                            </li>
+                            <li><a href="http://www.divcss5.com/jiqiao/j4.shtml"
+                                   title="DIV+CSS规范命名大全集合">DIV+CSS规范命名大全集合</a></li>
+                            <li><a href="http://www.divcss5.com/shili/s6.shtml" title="CSS margin属性与用法教程">CSS
+                                margin属性与用法教程</a></li>
+                            <li><a href="http://www.divcss5.com/shili/s7.shtml" title="padding_css padding用法详解">padding_css
+                                padding用法详解</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="mod-card">
+                    <div class="hd">
+                        <div class="tit"><a href="http://www.divcss5.com/jiqiao/j345.shtml#">CSS 特效</a> <span>CSS EFFECTS</span>
+                        </div>
+                    </div>
+                    <div class="bd">
+                        <ul class="thumb-list list2">
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m81.shtml"><img
+                                        src="./html5_files/1-1303261HH04U.jpg" alt="纯DIV+CSS下拉菜单模块模板"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a href="http://www.divcss5.com/template/m81.shtml">纯DIV+CSS下拉菜单模块模板</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m96.shtml"><img
+                                        src="./html5_files/1-1303261I004439.jpg" alt="DIV+CSS分页_CSS翻页代码模板"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a href="http://www.divcss5.com/template/m96.shtml">DIV+CSS分页_CSS翻页代码模板</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m99.shtml"><img
+                                        src="./html5_files/1-1303261H6021G.jpg" alt="css form实例 用CSS实现表单form布局实例"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a href="http://www.divcss5.com/template/m99.shtml">css form实例
+                                    用CSS实现表单form布局实例</a></div>
+                            </li>
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m101.shtml"><img
+                                        src="./html5_files/1-1303261H4593S.jpg" alt="经典DIV+CSS下拉菜单"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a
+                                        href="http://www.divcss5.com/template/m101.shtml">经典DIV+CSS下拉菜单</a></div>
+                            </li>
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m105.shtml"><img
+                                        src="./html5_files/1-1303261H33YR.jpg" alt="div+css不间断上下滚动模板"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a href="http://www.divcss5.com/template/m105.shtml">div+css不间断上下滚动模板</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="thumb"><a href="http://www.divcss5.com/template/m109.shtml"><img
+                                        src="./html5_files/1-1303261H1045U.jpg" alt="向上不间断滚动div+css+js模板"
+                                        data-bd-imgshare-binded="1"></a></div>
+                                <div class="content"><a href="http://www.divcss5.com/template/m109.shtml">向上不间断滚动div+css+js模板</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="mod-card">
+                    <div class="hd">
+                        <div class="tit">相关文章 <span>RELATED</span></div>
+                    </div>
+                    <div class="bd">
+                        <ul class="news-list">
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56184.shtml" title="把简单做好也不简单-css水平垂直居中">把简单做好也不简单-css水平垂直居中</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56176.shtml" title="眼下最流行的五大CSS框架，你都知道么？">眼下最流行的五大CSS框架，你都知道么？</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56185.shtml" title="纯 CSS 实现多行文字截断">纯 CSS
+                                    实现多行文字截断</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56183.shtml"
+                                   title="实现CSS居中的多种方法">实现CSS居中的多种方法</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56182.shtml" title="12 个 CSS 高级技巧汇总">12 个 CSS
+                                    高级技巧汇总</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56181.shtml" title="20 个 CSS 高级技巧汇总">20 个 CSS
+                                    高级技巧汇总</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56180.shtml" title="45个值得收藏的 CSS 形状【2】">45个值得收藏的
+                                    CSS 形状【2】</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56179.shtml" title="45个值得收藏的 CSS 形状【1】">45个值得收藏的
+                                    CSS 形状【1】</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j56177.shtml"
+                                   title="css样式大全(整理版）">css样式大全(整理版）</a>
+                            </li>
+                            <li>
+                                <a href="http://www.divcss5.com/jiqiao/j55858.shtml" title="CSS 绝对定位是什么">CSS 绝对定位是什么</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="mod-card">
+                    <div class="hd">
+                        <div class="tit">热点文章 <span>HOT</span></div>
+                    </div>
+                    <div class="bd">
+                        <ul class="news-hot">
+                            <li><a href="http://www.divcss5.com/rumen/r75.shtml" title="css 字间距离_css 字体字符间距设置">css
+                                字间距离_css 字体字符间距设置</a></li>
+                            <li><a href="http://www.divcss5.com/rumen/r120.shtml" title="CSS border边框属性教程(color style)">CSS
+                                border边框属性教程(color style)</a></li>
+                            <li><a href="http://www.divcss5.com/rumen/r93.shtml" title="div css float浮动用法(left right)">div
+                                css float浮动用法(left right)</a></li>
+                            <li><a href="http://www.divcss5.com/rumen/r116.shtml" title="CSS 文本字体颜色(CSS color)">CSS
+                                文本字体颜色(CSS color)</a></li>
+                            <li><a href="http://www.divcss5.com/rumen/r123.shtml" title="CSS 高度(css height)">CSS 高度(css
+                                height)</a></li>
+                            <li><a href="http://www.divcss5.com/shili/s296.shtml" title="DIV+CSS虚线边框|CSS虚线下划线及虚线列表教程">DIV+CSS虚线边框|CSS虚线下划线及虚线列表教程</a>
+                            </li>
+                            <li><a href="http://www.divcss5.com/wenji/w503.shtml" title="CSS如何设置html table表格边框样式">CSS如何设置html
+                                table表格边框样式</a></li>
+                            <li><a href="http://www.divcss5.com/shili/s8.shtml" title="DIV+CSS中让布局居中_背景图片居中_文字内容居中">DIV+CSS中让布局居中_背景图片居中_文字内容居中</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ft-ad row">
+        <a class="span7" href="http://www.divcss5.com/peixun/" target="_blank" rel="nofollow"><img
+                src="./html5_files/fl-w.jpg" width="450" height="90" data-bd-imgshare-binded="1"></a>
+        <a class="span5" href="http://www.divcss5.com/peixun/" target="_blank" rel="nofollow"><img
+                src="./html5_files/fl-w.jpg" width="450" height="90" data-bd-imgshare-binded="1"></a>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="links">
+                    <a target="_blank" href="http://www.divcss5.com/about/">关于我们</a> -
+                    <a target="_blank" href="http://www.divcss5.com/about/lianxi.html">联系我们</a> -
+                    <a target="_blank" href="http://www.divcss5.com/plus/flink.php">友情链接</a> -
+                    <a target="_blank" href="http://www.divcss5.com/peixun/" rel="nofollow">css培训</a> -
+                    <a target="_blank" href="http://www.divcss5.com/edu/" rel="nofollow">Edu学研室（VIP教程）</a>
+                    <p>学习<a href="http://www.divcss5.com/">CSS</a>，找<a href="http://www.divcss5.com/">DIV+CSS</a>资源上DIVCSS5!
+                    </p>
+                </div>
+            </div>
+            <div class="span3">
+                <p>©DIVCSS5.COM DIV CSS学习与资源分享平台</p>
+                <p><a href="http://www.divcss5.com/jiqiao/j345.shtml#" target="_blank">蜀ICP备09013689号</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+	$(function() {
+		$('[data-img-cover]').each(function() {
+			var el = $(this)
+			var img = el.find('img:first')
+			el.css({
+				'background-image': 'url('+ img.attr('src') +')'
+			})
+		})
+	})
+
+</script>
+
+<div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 80px; right: 30px; opacity: 0; cursor: pointer;">
+    <div class="up"></div>
+</div>
+<iframe frameborder="0" id="bdSharePopup_selectshare1622614476359bg" class="bdselect_share_bg" style="display:none;"
+        src="./html5_files/saved_resource.html"></iframe>
+<div id="bdSharePopup_selectshare1622614476359box" style="display:none;" share-type="selectshare"
+     class="bdselect_share_box" data-bd-bind="1622614476358">
+    <div class="selectshare-mod-triangle">
+        <div class="triangle-border"></div>
+        <div class="triangle-inset"></div>
+    </div>
+    <div class="bdselect_share_head"><span>分享到</span><a href="http://www.baidu.com/s?wd=&amp;tn=SE_hldp08010_vurs2xrp"
+                                                        class="bdselect_share_dialog_search" target="_blank"><i
+            class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a
+            class="bdselect_share_dialog_close"></a></div>
+    <div class="bdselect_share_content">
+        <ul class="bdselect_share_list bdshare-button-style0-32">
+            <div class="bdselect_share_partners"></div>
+            <a href="http://www.divcss5.com/jiqiao/j345.shtml#" class="bds_more" data-cmd="more"></a></ul>
+    </div>
+</div>
+<div id="bdimgshare_1622614476363" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-16 sr-bdimgshare-black"
+     style="height:36px;line-height:26px;font-size:12px;width:autopx;display:none;" data-bd-bind="1622614476363">
+    <div class="bdimgshare-bg"></div>
+    <div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-16"><label class="bdimgshare-lbl">分享到：</label><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_tsina" data-cmd="tsina"
+            hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;"
+                                class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_tqq" data-cmd="tqq"
+            hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;"
+                                class="bds_renren" data-cmd="renren" hidefocus=""></a><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_bdysc" data-cmd="bdysc"
+            hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;"
+                                class="bds_douban" data-cmd="douban" hidefocus=""></a><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_bdxc" data-cmd="bdxc"
+            hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;"
+                                class="bds_tieba" data-cmd="tieba" hidefocus=""></a><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_bdhome"
+            data-cmd="bdhome" hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                  onclick="return false;" class="bds_tqf" data-cmd="tqf"
+                                                  hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                                      onclick="return false;" class="bds_mshare"
+                                                                      data-cmd="mshare" hidefocus=""></a><a
+            href="http://www.divcss5.com/jiqiao/j345.shtml#" onclick="return false;" class="bds_youdao"
+            data-cmd="youdao" hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                  onclick="return false;" class="bds_copy" data-cmd="copy"
+                                                  hidefocus=""></a><a href="http://www.divcss5.com/jiqiao/j345.shtml#"
+                                                                      onclick="return false;" class="bds_more"
+                                                                      data-cmd="more" hidefocus=""></a></div>
+</div>
+<div class="xl-chrome-ext-bar" id="xl_chrome_ext_{4DB361DE-01F7-4376-B494-639E489D19ED}" style="display: none;">
+    <div class="xl-chrome-ext-bar__logo"></div>
+
+    <a id="xl_chrome_ext_download" href="javascript:;" class="xl-chrome-ext-bar__option">下载视频</a>
+    <a id="xl_chrome_ext_close" href="javascript:;" class="xl-chrome-ext-bar__close"></a>
+</div>
+</body>
+</html>
