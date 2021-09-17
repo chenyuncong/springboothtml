@@ -14,6 +14,7 @@
 	<name>springboothtml</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+		<app.version>0.1</app.version>
 		<java.version>1.8</java.version>
 		<spring-native.version>0.10.0-SNAPSHOT</spring-native.version>
 	</properties>
@@ -102,6 +103,48 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<!--这里将插件绑定在package这个操作上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build-->
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+							<!--<goal>push</goal>-->
+						</goals>
+					</execution>
+
+					<execution>
+						<id>tag-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>tag</goal>
+							<goal>push</goal>
+						</goals>
+						<configuration>
+							<image>${artifactId}-${app.version}:latest</image>
+							<newName>192.168.56.119/library/${artifactId}:${app.version}</newName>
+							<imageName>192.168.56.119/library/${artifactId}:${app.version}</imageName>
+						</configuration>
+					</execution>
+
+				</executions>
+				<configuration>
+					<imageName>${artifactId}-${app.version}</imageName>
+					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+					<serverId>my-docker-registry</serverId> <!-- 在maven中设置的账号密码，对应的服务id -->
+					<resources>
+						<rescource> <!-- 将打包文件放入dockerDirectory指定的位置 -->
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${artifactId}-${app.version}.jar</include>
+						</rescource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
